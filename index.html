@@ -98,18 +98,21 @@
                    ['-', '-', '-'],
                    ['-', '-', '-']];
     function move(element, row, col) {
+	if (state [row] [col]==='-') {
       console.log(`Element: ${element}, Row: ${row}, col: ${col}`);
       // Pabaigti. (Vietoj doges turetu but X arba O) hehe
       element.innerHTML = "X";
       xturn=!xturn;
-if (xturn===true) {
-element.innerHTML = "O";
-document.getElementById("turnIndicator").innerHTML = "O eile";
-}
-if (xturn===false) {
-element.innerHTML = "X";
-document.getElementById("turnIndicator").innerHTML = "X eile";
-}
+	if (xturn===false) {
+	element.innerHTML = "X";
+	state [row] [col]="X";
+	document.getElementById("turnIndicator").innerHTML = "O eile";
+	} else {
+	element.innerHTML = "O";
+	state [row] [col]="O";
+	document.getElementById("turnIndicator").innerHTML = "X eile";
+	}
+	}
       checkForWin();
     }
     function checkForWin() {
